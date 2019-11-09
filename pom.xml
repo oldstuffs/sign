@@ -38,6 +38,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
@@ -58,6 +59,27 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>version-matched</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>nbt</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>itemstack</artifactId>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>17.0.0</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>io.github.portlek</groupId>
             <artifactId>packetlisten</artifactId>
