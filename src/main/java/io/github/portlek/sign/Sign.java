@@ -85,7 +85,6 @@ public final class Sign {
 
     private static RefMethod getHandle;
     private static RefField playerConnection;
-    private static RefField networkManager;
     private static RefMethod sendPacket;
     private static RefField updateSignFieldB;
     private static RefMethod chatComponentGetText;
@@ -101,10 +100,8 @@ public final class Sign {
         try {
             getHandle = new ClassOf(cb + VERSION.raw() + ".entity.CraftPlayer").getMethod("getHandle");
             playerConnection = new ClassOf(nms + VERSION.raw() + ".EntityPlayer").getField("playerConnection");
-            networkManager = new ClassOf(nms + VERSION.raw() + ".PlayerConnection").getField("networkManager");
-            final RefClass packetClass = new ClassOf(nms + VERSION.raw() + ".Packet");
             sendPacket = new ClassOf(nms + VERSION.raw() + ".PlayerConnection")
-                .getMethod("sendPacket", packetClass.getRealClass());
+                .getMethod("sendPacket", new ClassOf(nms + VERSION.raw() + ".Packet"));
             updateSignFieldB = new ClassOf(nms + VERSION.raw() + "." + UPDATE_PACKET).getField("b");
             chatComponentGetText = new ClassOf(nms + VERSION.raw() + ".IChatBaseComponent")
                 .getMethod("getText");
@@ -121,10 +118,8 @@ public final class Sign {
 
     static void sendPacket(@NotNull Player player, @NotNull Object packet) {
         sendPacket.of(
-            networkManager.of(
-                playerConnection.of(
-                    getHandle.of(player).call(null)
-                ).get(player)
+            playerConnection.of(
+                getHandle.of(player).call(null)
             ).get(player)
         ).call(null, packet);
     }
