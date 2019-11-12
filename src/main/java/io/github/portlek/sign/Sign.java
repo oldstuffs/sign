@@ -53,7 +53,7 @@ public final class Sign {
 
     private void listen() {
         PACKETS.prepareFor(plugin);
-        PACKETS.registerWrite(UPDATE_PACKET, event -> {
+        PACKETS.registerRead(UPDATE_PACKET, event -> {
             final Player player = event.getPlayer();
             final Object packet = event.getPacket();
             final List<String> input = new ListOf<>(
