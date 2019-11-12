@@ -90,9 +90,9 @@ public final class Sign {
     private static RefField updateSignFieldB;
     private static RefMethod chatComponentGetText;
     static RefConstructed blockPosition;
-    static RefField blockPositionX;
-    static RefField blockPositionY;
-    static RefField blockPositionZ;
+    static RefMethod blockPositionX;
+    static RefMethod blockPositionY;
+    static RefMethod blockPositionZ;
 
     static {
         final String nms = "net.minecraft.server.v";
@@ -111,9 +111,9 @@ public final class Sign {
             blockPosition = new ClassOf(nms + VERSION.raw() + ".BlockPosition")
                 .getConstructor(int.class, int.class, int.class);
             final RefClass baseBlockPosition = new ClassOf(nms + VERSION.raw() + ".BaseBlockPosition");
-            blockPositionX = baseBlockPosition.getField("getX");
-            blockPositionY = baseBlockPosition.getField("getY");
-            blockPositionZ = baseBlockPosition.getField("getZ");
+            blockPositionX = baseBlockPosition.getMethod("getX");
+            blockPositionY = baseBlockPosition.getMethod("getY");
+            blockPositionZ = baseBlockPosition.getMethod("getZ");
         } catch (Exception exception) {
             exception.printStackTrace();
         }

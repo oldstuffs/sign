@@ -94,9 +94,9 @@ public final class Menu {
                 : "WW"
             )
         );
-        signNBT.setInt("x", (Integer) Sign.blockPositionX.of(blockPosition).get(0));
-        signNBT.setInt("y", (Integer) Sign.blockPositionY.of(blockPosition).get(0));
-        signNBT.setInt("z", (Integer) Sign.blockPositionZ.of(blockPosition).get(0));
+        signNBT.setInt("x", (Integer) Sign.blockPositionX.of(blockPosition).call(0));
+        signNBT.setInt("y", (Integer) Sign.blockPositionY.of(blockPosition).call(0));
+        signNBT.setInt("z", (Integer) Sign.blockPositionZ.of(blockPosition).call(0));
         signNBT.setString("id", NBT_BLOCK_ID);
 
         final Object signDataPacket = Sign.createPacket(
