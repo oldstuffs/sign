@@ -96,9 +96,10 @@ public final class Sign {
 
     static {
         final String nms = "net.minecraft.server.v";
+        final String cb = "org.bukkit.craftbukkit.v";
 
         try {
-            getHandle = new ClassOf(nms + VERSION.raw() + ".entity.CraftPlayer").getMethod("getHandle");
+            getHandle = new ClassOf(cb + VERSION.raw() + ".entity.CraftPlayer").getMethod("getHandle");
             playerConnection = new ClassOf(nms + VERSION.raw() + ".EntityPlayer").getField("playerConnection");
             networkManager = new ClassOf(nms + VERSION.raw() + ".PlayerConnection").getField("networkManager");
             final RefClass packetClass = new ClassOf(nms + Version.class + ".Packet");
