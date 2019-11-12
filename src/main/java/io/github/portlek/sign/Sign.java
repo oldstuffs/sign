@@ -123,16 +123,20 @@ public final class Sign {
         sendPacket.of(
             networkManager.of(
                 playerConnection.of(
-                    getHandle.of(player).call(player)
+                    getHandle.of(player).call(null)
                 ).get(player)
             ).get(player)
-        ).call(player, packet);
+        ).call(null, packet);
     }
 
     @Nullable
     static Object createPacket(@NotNull String className, @NotNull Object... parameters) {
+        final String nms = "net.minecraft.server.v";
+
         try {
-            return new ClassOf(className).getConstructor(parameters).create(null, parameters);
+            return new ClassOf(nms + VERSION.raw() + "." + className)
+                .getPrimitiveConstructor(parameters)
+                .create(null, parameters);
         } catch (ClassNotFoundException e) {
             return null;
         }
