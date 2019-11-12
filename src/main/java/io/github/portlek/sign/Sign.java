@@ -102,7 +102,7 @@ public final class Sign {
             getHandle = new ClassOf(cb + VERSION.raw() + ".entity.CraftPlayer").getMethod("getHandle");
             playerConnection = new ClassOf(nms + VERSION.raw() + ".EntityPlayer").getField("playerConnection");
             networkManager = new ClassOf(nms + VERSION.raw() + ".PlayerConnection").getField("networkManager");
-            final RefClass packetClass = new ClassOf(nms + Version.class + ".Packet");
+            final RefClass packetClass = new ClassOf(nms + VERSION.raw() + ".Packet");
             sendPacket = new ClassOf(nms + VERSION.raw() + ".PlayerConnection")
                 .getMethod("sendPacket", packetClass.getRealClass());
             updateSignFieldB = new ClassOf(nms + VERSION.raw() + UPDATE_PACKET).getField("b");
