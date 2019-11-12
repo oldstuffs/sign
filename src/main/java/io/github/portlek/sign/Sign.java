@@ -105,8 +105,8 @@ public final class Sign {
             final RefClass packetClass = new ClassOf(nms + VERSION.raw() + ".Packet");
             sendPacket = new ClassOf(nms + VERSION.raw() + ".PlayerConnection")
                 .getMethod("sendPacket", packetClass.getRealClass());
-            updateSignFieldB = new ClassOf(nms + VERSION.raw() + UPDATE_PACKET).getField("b");
-            chatComponentGetText = new ClassOf(nms + VERSION.raw() + "IChatBaseComponent")
+            updateSignFieldB = new ClassOf(nms + VERSION.raw() + "." + UPDATE_PACKET).getField("b");
+            chatComponentGetText = new ClassOf(nms + VERSION.raw() + ".IChatBaseComponent")
                 .getMethod("getText");
             blockPosition = new ClassOf(nms + VERSION.raw() + ".BlockPosition")
                 .getConstructor(int.class, int.class, int.class);
